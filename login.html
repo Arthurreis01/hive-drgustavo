@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Hive</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="login.css"/>
+
+  <!-- Firebase compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo-container">
+      <img src="assets/hive-logo.png" alt="Hive Logo" class="logo" />
+      <h2>Controle de Orçamentos <br> DR. Gustavo Marques</h2>
+    </div>
+
+    <form id="loginForm">
+      <div id="errorMessage" class="error-message"></div>
+
+      <input
+        type="email"
+        id="emailInput"
+        placeholder="E-mail"
+        required
+      />
+      <input
+        type="password"
+        id="passwordInput"
+        placeholder="Senha"
+        required
+      />
+      <button type="submit" id="loginButton">Entrar</button>
+    </form>
+  </div>
+
+  <!-- Auth logic -->
+  <script src="login.js"></script>
+</body>
+</html>

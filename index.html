@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Orçamento</title>
+  <link rel="stylesheet" href="style.css"/>
+
+  <!-- jsPDF para exportar PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Firebase compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <!-- ================= Tela Inicial ================= -->
+  <div id="home-screen">
+    <div class="container">
+      <h1>Orçamentos Cirúrgicos</h1>
+
+      <!-- Dashboard de negócios -->
+      <div id="dashboard" class="dashboard">
+        <div>🏆 Ganhos: <span id="countSuccess">0</span></div>
+        <div>❌ Perdidos: <span id="countLost">0</span></div>
+        <div>⏳ Em aberto > 2 dias: <span id="countOpenOver2Days">0</span></div>
+      </div>
+
+      <button id="btnNovoOrcamento">+ Novo Orçamento</button>
+      <button id="btnVerOrcamentos">📂 Ver Orçamentos Salvos</button>
+    </div>
+  </div>
+
+  <!-- =============== Formulário de Orçamento =============== -->
+  <div id="form-screen" class="hidden">
+    <div class="container">
+      <h1>Cadastro de Orçamento</h1>
+
+      <!-- Mensagem de aviso em vermelho (aparece se algum campo estiver em branco) -->
+      <div id="formAlert" class="form-alert hidden"></div>
+
+      <!-- 1. Tipo de Cirurgia (registro apenas) -->
+      <label>1. Selecione o Tipo de Cirurgia:</label>
+      <select id="tipoCirurgiaSelect">
+        <!-- será preenchido dinamicamente -->
+        <option value="">Carregando...</option>
+      </select>
+
+      <!-- 2. Procedimentos Hospitalares -->
+      <div id="form-detalhes" class="hidden">
+        <h2>2. Despesas Hospitalares</h2>
+        <div class="dropdown" id="procDropdown">
+          <div class="dropdown-toggle" id="procToggle">Clique para selecionar procedimentos...</div>
+          <div class="dropdown-menu hidden" id="procMenu">
+            <input type="text" id="buscaProcedimento" placeholder="Buscar procedimento..." />
+            <div id="procOptionsContainer"></div>
+            <button class="close-dropdown" onclick="fecharProcDropdown()">×</button>
+          </div>
+        </div>
+        <div class="item-list" id="procedimentosSelecionados"></div>
+
+        <!-- 3. Anestesias -->
+        <h2>3. Despesas com Anestesias</h2>
+        <div class="dropdown" id="anestDropdown">
+          <div class="dropdown-toggle" id="anestToggle">Clique para selecionar anestesias...</div>
+          <div class="dropdown-menu hidden" id="anestMenu">
+            <input type="text" id="buscaAnestesia" placeholder="Buscar anestesia..." />
+            <div id="anestOptionsContainer"></div>
+            <button class="close-dropdown" onclick="fecharAnestDropdown()">×</button>
+          </div>
+        </div>
+        <div class="item-list" id="anestesiasSelecionadas"></div>
+
+        <!-- 4. Valor Médico -->
+        <h2>4. Valor Dr. Gustavo</h2>
+        <input
+          type="number"
+          id="valorMedicoInput"
+          placeholder="Digite o valor médico"
+        />
+
+        <!-- Total Estimado -->
+        <h2>Total Estimado</h2>
+        <div id="resultadoTotal">R$ 0,00</div>
+
+        <!-- Botões de Ação -->
+        <div class="actions">
+          <button onclick="confirmarAntesSalvar()">Salvar Orçamento</button>
+          <button onclick="exportarPDFAtual()">Exportar PDF</button>
+          <button onclick="voltarHome()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ Tela de Orçamentos Salvos ============ -->
+  <div id="saved-screen" class="hidden">
+    <div class="container">
+      <h1>Orçamentos Salvos</h1>
+      <ul id="lista-orcamentos"></ul>
+      <button onclick="voltarHome()">Voltar</button>
+    </div>
+  </div>
+
+  <!-- seu script principal -->
+  <script src="script.js"></script>
+
+  <!-- script para popular o select de tipos de cirurgia -->
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // espera seu loadData() em script.js já ter sido executado
+      const select = document.getElementById("tipoCirurgiaSelect");
+      select.innerHTML = '<option value="">Selecione...</option>';
+      // procedimentosDB vem de script.js
+      Object.keys(procedimentosDB).forEach(cat => {
+        const opt = document.createElement("option");
+        opt.value = cat;
+        opt.innerText = cat;
+        select.appendChild(opt);
+      });
+    });
+  </script>
+</body>
+</html>
