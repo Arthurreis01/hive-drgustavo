@@ -27,7 +27,7 @@ loginForm.addEventListener('submit', async e => {
   try {
     await auth.signInWithEmailAndPassword(email, pass);
     // Redirecione para sua página principal após o login
-    window.location.href = 'app.html';
+    window.location.href = 'index.html';
   } catch (err) {
     // Mensagens de erro amigáveis
     const code = err.code || '';

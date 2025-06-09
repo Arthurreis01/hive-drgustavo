@@ -1,0 +1,53 @@
+{
+  "Abdômen": [
+    {"Procedimento": "Abdominoplastia (sem qualquer lipo)", "Valor": 2800.00},
+    {"Procedimento": "Mini Abdominoplastia (sem qualquer lipo)", "Valor": 2400.00}
+  ],
+  "Mama": [
+    {"Procedimento": "Mamoplastia com ou sem prótese", "Valor": 2850.00},
+    {"Procedimento": "Inclusão de prótese de silicone de mama", "Valor": 2400.00},
+    {"Procedimento": "Mamiloplastia ou areoloplastia", "Valor": 1750.00},
+    {"Procedimento": "Ginecomastia (incluindo lipo localizada na mama)", "Valor": 1750.00}
+  ],
+  "Lipoaspiração": [
+    {"Procedimento": "Lipoaspiração (até 60 min)", "Valor": 1650.00},
+    {"Procedimento": "Lipoaspiração (61–120 min)", "Valor": 2600.00},
+    {"Procedimento": "Lipoaspiração (121–240 min)", "Valor": 3450.00},
+    {"Procedimento": "Lipoaspiração (acima de 241 min)", "Valor": 4100.00},
+    {"Procedimento": "Lipo de Papada", "Valor": 1650.00}
+  ],
+  "Face": [
+    {"Procedimento": "Ritidoplastia total", "Valor": 4250.00},
+    {"Procedimento": "Ritidoplastia setorial", "Valor": 2400.00},
+    {"Procedimento": "Pálpebra total", "Valor": 1900.00},
+    {"Procedimento": "Pálpebra superior ou inferior", "Valor": 1200.00},
+    {"Procedimento": "Elevação de Sobrancelha / Supercílios", "Valor": 1750.00},
+    {"Procedimento": "Preenchimento Facial (por hora)", "Valor": 1600.00},
+    {"Procedimento": "Rinoplastia (até 180 min)", "Valor": 2600.00},
+    {"Procedimento": "Rinoplastia (acima de 180 min)", "Valor": 4150.00},
+    {"Procedimento": "Retirada de costela para rinoplastia", "Valor": 1650.00},
+    {"Procedimento": "Redução de fratura nasal traumática", "Valor": 1700.00},
+    {"Procedimento": "Orelha bilateral", "Valor": 1750.00},
+    {"Procedimento": "Orelha unilateral", "Valor": 1200.00},
+    {"Procedimento": "Lóbulo de orelha", "Valor": 1400.00},
+    {"Procedimento": "Mentoplastia", "Valor": 1300.00},
+    {"Procedimento": "Frontoplastia", "Valor": 2250.00}
+  ],
+  "Outras Cirurgias e Tecnologias": [
+    {"Procedimento": "Retirada de cicatriz", "Valor": 1600.00},
+    {"Procedimento": "Retirada de fuso de pele supra púbico (sem lipo)", "Valor": 1600.00},
+    {"Procedimento": "Plástica de braços (sem lipo)", "Valor": 2150.00},
+    {"Procedimento": "Plástica de coxas (sem lipo)", "Valor": 2600.00},
+    {"Procedimento": "Torsoplastia por unidade topográfica", "Valor": 2800.00},
+    {"Procedimento": "Retirada de costela até 4 segmentos", "Valor": 3450.00},
+    {"Procedimento": "Prótese de panturrilha", "Valor": 2400.00},
+    {"Procedimento": "Inclusão de prótese de silicone de glúteo", "Valor": 1600.00},
+    {"Procedimento": "Ninfoplastia", "Valor": 2100.00},
+    {"Procedimento": "Flancoplastia", "Valor": 2500.00},
+    {"Procedimento": "Bodytite / Facetite / Morpheus / Argoplasma (até 60 min)", "Valor": 1600.00},
+    {"Procedimento": "Bodytite / Facetite / Morpheus / Argoplasma (61–120 min)", "Valor": 2450.00},
+    {"Procedimento": "Bodytite / Facetite / Morpheus / Argoplasma (121–240 min)", "Valor": 3400.00},
+    {"Procedimento": "Bodytite / Facetite / Morpheus / Argoplasma (acima de 241 min)", "Valor": 4150.00},
+    {"Procedimento": "Lipo Belt / Costela / Remodelação Costal", "Valor": 1650.00}
+  ]
+}

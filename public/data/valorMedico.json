@@ -1,0 +1,19 @@
+[
+  { "Procedimento": "Prótese de mama", "Valor": 20577 },
+  { "Procedimento": "Mamoplastia com prótese primaria", "Valor": 31577 },
+  { "Procedimento": "Mamoplastia com prótese secundária", "Valor": 36577 },
+  { "Procedimento": "Mamoplastia com prótese terciária", "Valor": 41577 },
+  { "Procedimento": "Rino", "Valor": 31577 },
+  { "Procedimento": "Rino + costela", "Valor": 41577 },
+  { "Procedimento": "Pálpebra (total)", "Valor": 25000 },
+  { "Procedimento": "Pálpebra parcial", "Valor": 17000 },
+  { "Procedimento": "Lipo (corpo todo)", "Valor": 47577 },
+  { "Procedimento": "Lipo + abdominoplastia", "Valor": 65577 },
+  { "Procedimento": "Lipo + abdominoplastia + protese de mama", "Valor": 75577 },
+  { "Procedimento": "Lipo + abdominoplastia + mamoplastia", "Valor": 91577 },
+  { "Procedimento": "Lipo + miniabdominoplastia convencial", "Valor": 57577 },
+  { "Procedimento": "Lipo + miniabdominoplastia por video", "Valor": 67577 },
+  { "Procedimento": "Lipo com cicatriz", "Valor": 55577 },
+  { "Procedimento": "Orelha bilateral", "Valor": 29577 },
+  { "Procedimento": "Orelha unilateral", "Valor": 19577 }
+]

@@ -1,89 +1,134 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.9.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.9.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.9.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.9.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.9.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.9.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.9.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.9.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.9.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.9.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Orçamento</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.6.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-…" crossorigin="anonymous"
+  />
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- =============== Tela Inicial =============== -->
+  <div id="home-screen">
+    <div class="container">
+      <h1>Orçamentos Cirúrgicos</h1>
+      <div id="dashboard" class="dashboard">
+        <div>🏆 Ganhos: <span id="countSuccess">0</span></div>
+        <div>❌ Perdidos: <span id="countLost">0</span></div>
+        <div>⏳ Em aberto > 2 dias: <span id="countOpenOver2Days">0</span></div>
+      </div>
+      <button id="btnNovoOrcamento">+ Novo Orçamento</button>
+      <button id="btnVerOrcamentos">📂 Ver Orçamentos Salvos</button>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  <!-- =========== Formulário de Orçamento =========== -->
+  <div id="form-screen" class="hidden">
+    <div class="container">
+      <h1>Cadastro de Orçamento</h1>
+      <div id="formAlert" class="form-alert hidden"></div>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+      <label>1. Selecione o Tipo de Cirurgia:</label>
+      <select id="tipoCirurgiaSelect">
+        <option value="">Carregando...</option>
+      </select>
+
+      <div id="form-detalhes" class="hidden">
+        <!-- Procedimentos -->
+        <h2>2. Procedimentos Hospitalares</h2>
+        <div class="dropdown" id="procDropdown">
+          <div class="dropdown-toggle" id="procToggle">
+            Clique para selecionar procedimentos...
+          </div>
+          <div class="dropdown-menu hidden" id="procMenu">
+            <input type="text"
+                   id="buscaProcedimento"
+                   placeholder="Buscar procedimento..." />
+            <div id="procOptionsContainer"></div>
+            <button class="close-dropdown"
+                    onclick="fecharProcDropdown()">×</button>
+          </div>
+        </div>
+        <div class="item-list" id="procedimentosSelecionados"></div>
+
+        <!-- Anestesias -->
+        <h2>3. Anestesias</h2>
+        <div class="dropdown" id="anestDropdown">
+          <div class="dropdown-toggle" id="anestToggle">
+            Clique para selecionar anestesias...
+          </div>
+          <div class="dropdown-menu hidden" id="anestMenu">
+            <input type="text"
+                   id="buscaAnestesia"
+                   placeholder="Buscar anestesia..." />
+            <div id="anestOptionsContainer"></div>
+            <button class="close-dropdown"
+                    onclick="fecharAnestDropdown()">×</button>
+          </div>
+        </div>
+        <div class="item-list" id="anestesiasSelecionadas"></div>
+
+        <!-- Setor Médico -->
+        <h2>4. Valor do Setor Médico</h2>
+        <div class="dropdown" id="medDropdown">
+          <div class="dropdown-toggle" id="medToggle">
+            Clique para selecionar setor médico...
+          </div>
+          <div class="dropdown-menu hidden" id="medMenu">
+            <input type="text"
+                   id="buscaMedico"
+                   placeholder="Buscar setor..." />
+            <div id="medOptionsContainer"></div>
+            <button class="close-dropdown"
+                    onclick="fecharMedDropdown()">×</button>
+          </div>
+        </div>
+        <div>
+          <strong>Setor Selecionado:</strong>
+          <span id="setorSelecionadoNome">Nenhum</span>
+        </div>
+        <input type="number"
+               id="valorMedicoInput"
+               placeholder="Digite o valor do setor médico" />
+
+        <!-- Total Estimado -->
+        <h2>Total Estimado</h2>
+        <div id="resultadoTotal">R$ 0,00</div>
+
+        <div class="actions">
+          <button onclick="confirmarAntesSalvar()">Salvar Orçamento</button>
+          <button onclick="exportarPDFAtual()">Exportar PDF</button>
+          <button onclick="voltarHome()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== Tela de Orçamentos Salvos ======== -->
+  <div id="saved-screen" class="hidden">
+    <div class="container">
+      <h1 class="mb-4">Orçamentos Salvos</h1>
+      <ul id="lista-orcamentos" class="list-group"></ul>
+      <button class="btn btn-secondary mt-3" onclick="voltarHome()">
+        <i class="bi bi-arrow-left-circle"></i> Voltar
+      </button>
+    </div>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Seu código -->
+  <script src="script.js"></script>
+</body>
 </html>
